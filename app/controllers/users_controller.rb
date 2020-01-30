@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new(user_params)
+    @user = User.new
   end
 
   def create
@@ -19,13 +19,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.update(user_params)
+    
   end
 
   def update
     @user = User.update(user_params)
-    @user.save
-    redirect_to root_url
+    redirect_to user_url(@user)
   end
 
   def destroy
@@ -36,7 +35,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:users).permit(:name, :email, :password)
+      params.require(:user).permit(:name, :email, :password)
     end
 
     def set_user
