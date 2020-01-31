@@ -1,4 +1,9 @@
 <h1>Users#index</h1>
+<% if current_user %>
+  <%= current_user.name %>
+<% end %>
+<h2><%= link_to "Login", login_path %></h2>
+<h2><%= link_to "Logout", logout_path, method: :delete %></h2>
 <%= link_to "New", new_user_path %>
 <% @users.each do |user| %>
   <ul>
