@@ -6,6 +6,8 @@
   <%= f.email_field :email %>
   <%= f.label :password %>
   <%= f.password_field :password %>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
   <%= f.submit %>
 <% end %>
 <p><%= link_to "Back", users_path %></p>
