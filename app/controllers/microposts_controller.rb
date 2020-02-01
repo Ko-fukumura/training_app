@@ -1,6 +1,5 @@
 class MicropostsController < ApplicationController
   before_action :set_micropost, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @microposts = Micropost.all
@@ -10,12 +9,11 @@ class MicropostsController < ApplicationController
   end
 
   def new
-    @micropost = Micropost.new
+    @micropost = current_user.microposts.build
   end
 
   def create
-    @micropost = Micropost.new(micropost_params)
-    @micropost.user_id = @user.id
+    @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
       # flash
       redirect_to microposts_url
@@ -44,14 +42,11 @@ class MicropostsController < ApplicationController
   private
 
     def micropost_params
-      params.require(:micropost).permit(:content, :user_id)
+      params.require(:micropost).permit(:content)
     end
 
     def set_micropost
       @micropost = Micropost.find(params[:id])
     end
 
-    def set_user
-      @user = User.find_by(id: session[:user_id])
-    end
 end
