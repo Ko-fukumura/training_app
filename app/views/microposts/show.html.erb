@@ -2,4 +2,6 @@
 <p><%= @micropost.content %></p>
 <p><%= @micropost.user.name %></p>
 <p><%= link_to "Back", microposts_path %></p>
-<p><%= link_to "Edit", edit_micropost_path %></p>
+<% if current_user?(@micropost.user) %>
+  <p><%= link_to "Edit", edit_micropost_path %></p>
+<% end %>
