@@ -1,0 +1,13 @@
+<h1>Microposts#index</h1>
+<% if current_user %>
+  <%= current_user.name %>
+<% end %>
+<%= link_to "New", new_micropost_path %>
+<% @microposts.each do |micropost| %>
+  <ul>
+  <li><%= link_to micropost.content, micropost_path(micropost) %></li>
+  <% if current_user?(micropost.user) %>
+    <li><%= link_to "削除", micropost_path(micropost.id), method: :delete %></li>
+  <% end %>
+  </ul>
+<% end %>
