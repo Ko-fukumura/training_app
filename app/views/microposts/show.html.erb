@@ -1,6 +1,11 @@
 <h1>Microposts#show</h1>
 <p><%= @micropost.content %></p>
 <p><%= @micropost.user.name %></p>
+<% if @micropost.images.attached? %>
+  <% @micropost.images.each do |image| %>
+    <%= image_tag image.variant(resize: "300x300") %>
+  <% end %>
+<% end %>
 <p><%= link_to "Back", microposts_path %></p>
 <% if current_user?(@micropost.user) %>
   <p><%= link_to "Edit", edit_micropost_path %></p>
