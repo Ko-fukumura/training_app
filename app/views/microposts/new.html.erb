@@ -2,6 +2,8 @@
 <%= form_with model: @micropost do |f| %>
   <%= f.label :content %>
   <%= f.text_field :content %>
+  <%= f.label :images %>
+  <%= f.file_field :images, multiple: true %>
   <%= f.submit  %>
 <% end %>
 <p><%= link_to "Back", microposts_path %></p>
