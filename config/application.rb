@@ -17,6 +17,6 @@ module TrainingApp
     # the framework and any gems in your application.
 
     # Use SendGrid
-    config.autoload_paths += %W(#{config.root}/lib/mail)
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
