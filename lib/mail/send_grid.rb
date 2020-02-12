@@ -13,7 +13,7 @@ class Mail::SendGrid
     sg_mail.add_content(SendGrid::Content.new(type: 'text/plain', value: mail.body.raw_source))
     sg_mail.add_personalization(personalization)
 
-    sg = SendGrid::API.new(api_key: @settings[:sendgrid_api_key])
+    sg = SendGrid::API.new(api_key: Rails.application.credentials.dig(:sendgrid_api_key))
     response = sg.client.mail._('send').post(request_body: sg_mail.to_json)
     Rails.logger.info response.status_code
   end
