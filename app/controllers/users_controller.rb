@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      SendgridMailer.test_mail.deliver_now
+      SendgridMailer.account_activation(@user).deliver_now
       # flash[:success]
       redirect_to root_url
     else

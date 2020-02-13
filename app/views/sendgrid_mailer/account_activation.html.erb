@@ -1,0 +1,7 @@
+<h1>trainig_app</h1>
+
+<p>Hi <%= @user.name %>,</p>
+
+<p>Welcome to the training_app! Click on the below to activate your accoun:</p>
+
+<%= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email) %>
