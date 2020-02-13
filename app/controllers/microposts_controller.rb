@@ -1,5 +1,6 @@
 class MicropostsController < ApplicationController
   before_action :set_micropost, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @microposts = Micropost.all
@@ -47,6 +48,10 @@ class MicropostsController < ApplicationController
 
     def set_micropost
       @micropost = Micropost.find(params[:id])
+    end
+
+    def set_user
+      @user = current_user
     end
 
 end
