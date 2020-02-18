@@ -3,7 +3,7 @@
 one:
   name: MyString
   email: MyString
-  password: MyString
+  password_digest: <%= User.digest('password')
 
 two:
   name: MyString
