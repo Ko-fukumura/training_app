@@ -1,11 +1,12 @@
 class SendgridMailer < ApplicationMailer
 
-  def test_mail
-    mail(from: 'from@example.com', to: 'shamballa-o-k.f@ezweb.ne.jp', subject: 'テストメール')
+  def test_mail(user)
+    @user = user
+    mail(from: 'from@example.com', to: @user.email, subject: 'テストメール')
   end
 
   def account_activation(user)
     @user = user
-    mail(from: 'from@example.com', to: @user.email, subject: "Account activation")
+    mail(from: 'from@example.com', to: @user.email, subject: 'Account activation')
   end
 end
