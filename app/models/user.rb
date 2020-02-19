@@ -36,9 +36,9 @@ class User < ApplicationRecord
     update_attribute(:activated, true)
   end
 
-  def send_activation_email
-    SendgridMailer.account_activation(self).deliver_now
-  end
+  # def send_activation_email
+  #   SendgridMailer.account_activation(self).deliver_now
+  # end
 
   private
 
