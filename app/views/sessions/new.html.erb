@@ -1,13 +1,30 @@
+<div class="sidenav">
+  <div class="login-main-text">
+    <h2>training-app<br> Login Page</h2>
+  </div>
+</div>
+<div class="main">
+<div class="col-md-6 col-sm-12">
+<div class="login-form">
 <%= form_with scope: :session, url: login_path do |f| %>
+  <div class="form-group">
   <%= f.label :email %>
   <%= f.email_field :email, class: 'form-control' %>
+  </div>
+  <div class="form-group">
   <%= f.label :password %>
   <%= f.password_field :password, class: 'form-control' %>
+  </div>
+  <div class="form-group">
   <%= f.label :remember_me, class: "checkbox inline" do %>
     <%= f.check_box :remember_me %>
     <span>ログインしたままにする</span>
   <% end %>
-  <%= f.submit "Login" %>
+  </div>
+  <%= f.submit "Login", class: "btn btn-secondary" %>
 <% end %>
 
 <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+</div>
+</div>
+</div>
